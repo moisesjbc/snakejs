@@ -1,6 +1,7 @@
 var stage;
 var CELL_SIZE = 20;
 var snakeHead;
+var direction = { x:1, y:0 };
 
 function init()
 {
@@ -20,6 +21,7 @@ function init()
 
 function update()
 {
-	snakeHead.x += CELL_SIZE;
+	snakeHead.x += direction.x * CELL_SIZE;
+	snakeHead.y += direction.y * CELL_SIZE;
 	stage.update();
 }
