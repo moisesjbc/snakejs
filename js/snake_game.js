@@ -14,7 +14,7 @@ function init()
 	canvasWidth = document.getElementById( "snakeCanvas" ).width;
 	canvasHeight = document.getElementById( "snakeCanvas" ).height;
 
-	createjs.Ticker.setFPS( 5 );
+	createjs.Ticker.setFPS( 10 );
 	createjs.Ticker.addEventListener( "tick", update );
 
 	document.addEventListener( "keydown", handleKeyDown );
