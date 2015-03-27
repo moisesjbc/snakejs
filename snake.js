@@ -1,8 +1,39 @@
 var stage;
 var CELL_SIZE = 20;
 var snakeHead;
-var direction = { label:'right', x:1, y:0 };
+var direction = new Direction( 'right' );
 var canvasWidth, canvasHeight;
+
+function Direction( label )
+{
+	this.set = function( label )
+	{
+		switch( label ){
+			case 'right':
+				this.label = 'right';
+				this.x = 1;
+				this.y = 0;
+			break;
+			case 'left':
+				this.label = 'left';
+				this.x = -1;
+				this.y = 0;
+			break;
+			case 'up':
+				this.label = 'up';
+				this.x = 0;
+				this.y = -1;
+			break;
+			case 'down':
+				this.label = 'down';
+				this.x = 0;
+				this.y = 1;
+			break;
+		}
+	}
+	this.set( label );
+}
+
 
 function init()
 {
@@ -48,20 +79,12 @@ function update()
 function handleKeyDown( event )
 {
 	if( event.keyCode == 37 && direction.label != 'right' ){
-		direction.label = 'left';
-		direction.x = -1;
-		direction.y = 0;
+		direction.set( 'left' );
 	}else if( event.keyCode == 39 && direction.label != 'left' ){
-		direction.label = 'right';
-		direction.x = 1;
-		direction.y = 0;
+		direction.set( 'right' );
 	}else if( event.keyCode == 38 && direction.label != 'down' ){
-		direction.label = 'up';
-		direction.x = 0;
-		direction.y = -1;
+		direction.set( 'up' );
 	}else if( event.keyCode == 40 && direction.label != 'up' ){
-		direction.label = 'down';
-		direction.x = 0;
-		direction.y = 1;
+		direction.set( 'down' );
 	}
 }
