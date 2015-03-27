@@ -18,6 +18,8 @@ function init()
 	createjs.Ticker.addEventListener( "tick", update );
 
 	document.addEventListener( "keydown", handleKeyDown );
+
+	createFood();
 }
 
 
@@ -39,4 +41,15 @@ function handleKeyDown( event )
 	}else if( event.keyCode == 40 && snake.direction.label != 'up' ){
 		snake.setDirection( 'down' );
 	}
+}
+
+
+function createFood()
+{
+	var food = new createjs.Shape();
+	food.graphics.beginFill( 'black' );
+	food.graphics.drawRect( 0, 0, CELL_SIZE, CELL_SIZE );
+	food.x = Math.floor( Math.random() * ( canvasWidth / CELL_SIZE ) ) * CELL_SIZE;
+	food.y = Math.floor( Math.random() * ( canvasHeight / CELL_SIZE ) ) * CELL_SIZE;
+	stage.addChild( food );
 }
