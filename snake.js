@@ -1,6 +1,6 @@
 var stage;
 var CELL_SIZE = 20;
-var snakeHead = ;
+var snakeHead;
 
 function init()
 {
@@ -8,7 +8,7 @@ function init()
 
 	snakeHead = new createjs.Shape();
 	snakeHead.graphics.beginFill("black");
-	snakeHead.drawRect( 0, 0, CELL_SIZE, CELL_SIZE );
+	snakeHead.graphics.drawRect( 0, 0, CELL_SIZE, CELL_SIZE );
 	snakeHead.x = 0;
 	snakeHead.y = 0;
 	stage.addChild( snakeHead );
