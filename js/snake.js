@@ -1,20 +1,24 @@
 var stage;
 var CELL_SIZE = 20;
-var snakeHead;
+var snake = [];
 var direction = new Direction( 'right' );
 var canvasWidth, canvasHeight;
+var snakeSize = 3;
+var snakeTailIndex;
+var snakeHeadIndex;
 
 function init()
 {
 	stage = new createjs.Stage( "snakeCanvas" );
 
-	snakeHead = new createjs.Shape();
-	snakeHead.graphics.beginFill("black");
-	snakeHead.graphics.drawRect( 0, 0, CELL_SIZE, CELL_SIZE );
-	snakeHead.x = 0;
-	snakeHead.y = 0;
-	stage.addChild( snakeHead );
-
+	for( i = 0; i < snakeSize; i++ ){
+		snake[i] = new createjs.Shape();
+		snake[i].graphics.beginFill("black");
+		snake[i].graphics.drawRect( 0, 0, CELL_SIZE, CELL_SIZE );
+		stage.addChild( snake[i] );
+	}
+	resetSnake();
+	
 	canvasWidth = document.getElementById( "snakeCanvas" ).width;
 	canvasHeight = document.getElementById( "snakeCanvas" ).height;
 
@@ -25,18 +29,31 @@ function init()
 }
 
 
+function resetSnake()
+{
+	snakeTailIndex = 0;
+	snakeHeadIndex = snakeSize - 1;
+	for( i = 0; i < snakeSize; i++ ){
+		snake[i].x = i * CELL_SIZE;
+		snake[i].y = 0;
+		direction.set( 'right' );
+	}
+}
+
+
 function update()
 {
-	snakeHead.x += direction.x * CELL_SIZE;
-	snakeHead.y += direction.y * CELL_SIZE;
+	snake[snakeTailIndex].x = snake[snakeHeadIndex].x + direction.x * CELL_SIZE;
+	snake[snakeTailIndex].y = snake[snakeHeadIndex].y + direction.y * CELL_SIZE;
 
-	if( snakeHead.x < 0 || 
-	    snakeHead.x > canvasWidth ||
-	    snakeHead.y < 0 ||
-	    snakeHead.y > canvasHeight ){
-		snakeHead.x = 0;
-		snakeHead.y = 0;
-		direction.set( 'right' );
+	snakeHeadIndex = ( snakeHeadIndex + 1 ) % snakeSize;
+	snakeTailIndex = ( snakeTailIndex + 1 ) % snakeSize;
+	
+	if( snake[snakeHeadIndex].x < 0 || 
+	    snake[snakeHeadIndex].x > canvasWidth ||
+	    snake[snakeHeadIndex].y < 0 ||
+	    snake[snakeHeadIndex].y > canvasHeight ){
+		resetSnake();
 	}
 
 	stage.update();
