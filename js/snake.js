@@ -36,9 +36,7 @@ function update()
 	    snakeHead.y > canvasHeight ){
 		snakeHead.x = 0;
 		snakeHead.y = 0;
-		direction.label = 'right';
-		direction.x = 1;
-		direction.y = 0;
+		direction.set( 'right' );
 	}
 
 	stage.update();
