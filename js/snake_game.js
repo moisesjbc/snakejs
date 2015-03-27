@@ -1,8 +1,8 @@
 var stage;
 var CELL_SIZE = 20;
 var canvasWidth, canvasHeight;
-var snakeSize = 3;
 var snake;
+var food;
 
 function init()
 {
@@ -25,7 +25,7 @@ function init()
 
 function update()
 {
-	snake.update( stage );
+	snake.update( stage, food );
 	stage.update();
 }
 
@@ -46,7 +46,7 @@ function handleKeyDown( event )
 
 function createFood()
 {
-	var food = new createjs.Shape();
+	food = new createjs.Shape();
 	food.graphics.beginFill( 'black' );
 	food.graphics.drawRect( 0, 0, CELL_SIZE, CELL_SIZE );
 	food.x = Math.floor( Math.random() * ( canvasWidth / CELL_SIZE ) ) * CELL_SIZE;

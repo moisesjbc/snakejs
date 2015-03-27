@@ -1,3 +1,5 @@
+var snakeSize = 3;
+
 function Snake(){
 	this.body = [];
 	this.direction = new Direction( 'right' );
@@ -20,13 +22,32 @@ function Snake(){
 	}
 
 	
-	this.update = function( stage ){
-		this.body[this.tailIndex].x = this.body[this.headIndex].x + this.direction.x * CELL_SIZE;
-		this.body[this.tailIndex].y = this.body[this.headIndex].y + this.direction.y * CELL_SIZE;
+	this.update = function( stage, food ){
+		var nextPos = {};
+		nextPos.x = this.body[this.headIndex].x + this.direction.x * CELL_SIZE;
+		nextPos.y = this.body[this.headIndex].y + this.direction.y * CELL_SIZE;
 
-		this.headIndex = ( this.headIndex + 1 ) % snakeSize;
-		this.tailIndex = ( this.tailIndex + 1 ) % snakeSize;
-	
+		if( nextPos.x == food.x && nextPos.y == food.y ){
+			var newBodyCell = new createjs.Shape();
+			newBodyCell.graphics.beginFill("black");
+			newBodyCell.graphics.drawRect( 0, 0, CELL_SIZE, CELL_SIZE );
+			newBodyCell.x = nextPos.x;
+			newBodyCell.y = nextPos.y;
+			stage.addChild( newBodyCell );
+
+			this.body.splice( this.headIndex + 1, 0, newBodyCell );
+			this.headIndex++;
+			
+			stage.removeChild( food );
+		}else{
+			this.body[this.tailIndex].x = nextPos.x;
+			this.body[this.tailIndex].y = nextPos.y;
+			
+			this.headIndex = ( this.headIndex + 1 ) % this.body.length;
+		}
+		this.tailIndex = ( this.tailIndex + 1 ) % this.body.length;
+		
+		
 		if( this.body[this.headIndex].x < 0 || 
 		    this.body[this.headIndex].x > canvasWidth ||
 		    this.body[this.headIndex].y < 0 ||
