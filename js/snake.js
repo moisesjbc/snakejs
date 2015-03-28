@@ -2,19 +2,22 @@ var snakeSize = 3;
 
 function Snake(){
 	this.body = [];
-	this.direction = new Direction( 'right' );
-
-	for( i = 0; i < snakeSize; i++ ){
-		this.body[i] = new createjs.Shape();
-		this.body[i].graphics.beginFill("black");
-		this.body[i].graphics.drawRect( 0, 0, CELL_SIZE, CELL_SIZE );
-		stage.addChild( this.body[i] );
-	}
 	
 	this.reset = function(){
 		this.tailIndex = 0;
 		this.headIndex = snakeSize - 1;
+
+		for( i = 0; i < this.body.length; i++ ){
+			stage.removeChild( this.body[i] );
+		}
+
+		this.direction = new Direction( 'right' );
+	
 		for( i = 0; i < snakeSize; i++ ){
+			this.body[i] = new createjs.Shape();
+			this.body[i].graphics.beginFill("black");
+			this.body[i].graphics.drawRect( 0, 0, CELL_SIZE, CELL_SIZE );
+			stage.addChild( this.body[i] );
 			this.body[i].x = i * CELL_SIZE;
 			this.body[i].y = 0;
 			this.direction.set( 'right' );
