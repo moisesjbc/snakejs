@@ -10,6 +10,7 @@ function Snake(){
 		for( i = 0; i < this.body.length; i++ ){
 			stage.removeChild( this.body[i] );
 		}
+		this.body = [];
 
 		this.direction = new Direction( 'right' );
 	
