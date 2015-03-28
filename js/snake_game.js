@@ -14,12 +14,12 @@ function init()
 	canvasWidth = document.getElementById( "snakeCanvas" ).width;
 	canvasHeight = document.getElementById( "snakeCanvas" ).height;
 
+	createFood();
+
 	createjs.Ticker.setFPS( 10 );
 	createjs.Ticker.addEventListener( "tick", update );
 
-	document.addEventListener( "keydown", handleKeyDown );
-
-	createFood();
+	document.addEventListener( "keydown", handleKeyDown );	
 }
 
 
@@ -46,10 +46,6 @@ function handleKeyDown( event )
 
 function createFood()
 {
-	food = new createjs.Shape();
-	food.graphics.beginFill( 'black' );
-	food.graphics.drawRect( 0, 0, CELL_SIZE, CELL_SIZE );
-	food.x = Math.floor( Math.random() * ( canvasWidth / CELL_SIZE ) ) * CELL_SIZE;
-	food.y = Math.floor( Math.random() * ( canvasHeight / CELL_SIZE ) ) * CELL_SIZE;
-	stage.addChild( food );
+	food = new Food( stage );
+	alert( food.x );
 }

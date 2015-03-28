@@ -42,7 +42,7 @@ function Snake(){
 			this.body.splice( this.headIndex + 1, 0, newBodyCell );
 			this.headIndex++;
 			
-			stage.removeChild( food );
+			food.reset();
 		}else{
 			this.body[this.tailIndex].x = nextPos.x;
 			this.body[this.tailIndex].y = nextPos.y;
