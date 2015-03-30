@@ -1,11 +1,11 @@
-var snakeSize = 3;
+var snakeStartSize = 3;
 
 function Snake(){
 	this.body = [];
 	
 	this.reset = function(){
 		this.tailIndex = 0;
-		this.headIndex = snakeSize - 1;
+		this.headIndex = snakeStartSize - 1;
 
 		for( i = 0; i < this.body.length; i++ ){
 			stage.removeChild( this.body[i] );
@@ -14,7 +14,7 @@ function Snake(){
 
 		this.direction = new Direction( 'right' );
 	
-		for( i = 0; i < snakeSize; i++ ){
+		for( i = 0; i < snakeStartSize; i++ ){
 			this.body[i] = new createjs.Shape();
 			this.body[i].graphics.beginFill("black");
 			this.body[i].graphics.drawRect( 0, 0, CELL_SIZE, CELL_SIZE );
@@ -23,6 +23,8 @@ function Snake(){
 			this.body[i].y = 0;
 			this.direction.set( 'right' );
 		}
+		document.getElementById( 'snakeScore' ).innerHTML =
+			'Score: ' + (this.body.length - snakeStartSize);
 	}
 
 	
@@ -53,6 +55,9 @@ function Snake(){
 				this.tailIndex++;
 			}
 			this.headIndex++;
+
+			document.getElementById( 'snakeScore' ).innerHTML =
+			'Score: ' + (this.body.length - snakeStartSize);
 			
 			food.reset( this.body );
 		}else{
