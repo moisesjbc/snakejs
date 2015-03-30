@@ -25,10 +25,16 @@ function init()
 
 function update( event )
 {
-	if (!event.paused) {
-		if( !snake.update( stage, food ) ){
+	if( !event.paused ){
+		if( !snake.update( stage, food ) || victory() ){
+			var msg;
+			if( victory() ){
+				msg = 'Victory!';
+			}else{
+				msg = 'Game over';
+			}
 			createjs.Ticker.paused = true;
-			alert( 'Game over' );
+			alert( msg );
 			snake.reset();
 			food.reset();
 			createjs.Ticker.paused = false;
@@ -49,6 +55,12 @@ function handleKeyDown( event )
 	}else if( event.keyCode == 40 && snake.direction.label != 'up' ){
 		snake.setDirection( 'down' );
 	}
+}
+
+
+function victory()
+{
+	return (snake.body.length >= ( (canvasWidth / CELL_SIZE) * (canvasHeight / CELL_SIZE) ) );
 }
 
 
