@@ -84,6 +84,24 @@ function testFindFirstFreePosition()
 		var returnedPos = findFirstFreePosition( startPos, occupiedPositions );
 		checkReturnedPos( returnedPos, expectedPos );
 	}
+
+
+	{
+		var occupiedPositions = [];
+		var startPos = {x:3*CELL_SIZE, y:3*CELL_SIZE };
+		var expectedPos = {x:2*CELL_SIZE, y:3*CELL_SIZE};
+		
+		for( var x = 0; x < canvasWidth; x += CELL_SIZE ){
+			for( var y = 0; y < canvasHeight; y += CELL_SIZE ){
+				if( x != expectedPos.x || y != expectedPos.y ){
+					occupiedPositions.push( {x:x, y:y} );
+				}
+			}
+		}
+		var returnedPos = findFirstFreePosition( startPos, occupiedPositions );
+		checkReturnedPos( returnedPos, expectedPos );
+	}
+
 	alert( 'testFindFirstFreePosition - OK' );
 }
 

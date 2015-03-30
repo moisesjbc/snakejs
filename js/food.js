@@ -14,7 +14,7 @@ function findFirstFreePosition( startPos, occupiedPositions )
 {
 	var currentPos = {x:startPos.x, y:startPos.y};
 
-	// Search in the same row
+	// Search in the same row (next columns)
 	for( ; currentPos.x < canvasWidth; currentPos.x += CELL_SIZE ){
 		if( !positionOccupied( currentPos, occupiedPositions ) ){
 			return currentPos;
@@ -33,10 +33,17 @@ function findFirstFreePosition( startPos, occupiedPositions )
 
 	// Search in previous rows.
 	for( currentPos.y = 0; currentPos.y < startPos.y; currentPos.y += CELL_SIZE ){
-		for( currentPos.x = 0; startPos.x < canvasWidth; currentPos.x += CELL_SIZE ){
+		for( currentPos.x = 0; currentPos.x < canvasWidth; currentPos.x += CELL_SIZE ){
 			if( !positionOccupied( currentPos, occupiedPositions ) ){
 				return currentPos;
 			}
+		}
+	}
+
+	// Search in the same row (previous columns)
+	for( currentPos.x = 0; currentPos.x < startPos.x; currentPos.x += CELL_SIZE ){
+		if( !positionOccupied( currentPos, occupiedPositions ) ){
+			return currentPos;
 		}
 	}	
 
