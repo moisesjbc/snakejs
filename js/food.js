@@ -2,8 +2,8 @@
 function positionOccupied( pos, occupiedPositions )
 {
 	for( var i = 0; i < occupiedPositions.length; i++ ){
-		if( pos.x == occupiedPositions[i].x &&
-		 pos.y == occupiedPositions[i].y ){
+		if( pos.x === occupiedPositions[i].x &&
+		 pos.y === occupiedPositions[i].y ){
 			return true;
 		}
 	}

@@ -47,13 +47,13 @@ function update( event )
 
 function handleKeyDown( event )
 {
-	if( event.keyCode == 37 && snake.direction.label != 'right' ){
+	if( event.keyCode === 37 && snake.direction.label != 'right' ){
 		snake.setDirection( 'left' );
-	}else if( event.keyCode == 39 && snake.direction.label != 'left' ){
+	}else if( event.keyCode === 39 && snake.direction.label != 'left' ){
 		snake.setDirection( 'right' );
-	}else if( event.keyCode == 38 && snake.direction.label != 'down' ){
+	}else if( event.keyCode === 38 && snake.direction.label != 'down' ){
 		snake.setDirection( 'up' );
-	}else if( event.keyCode == 40 && snake.direction.label != 'up' ){
+	}else if( event.keyCode === 40 && snake.direction.label != 'up' ){
 		snake.setDirection( 'down' );
 	}
 }

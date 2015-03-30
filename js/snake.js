@@ -36,13 +36,13 @@ function Snake(){
 
 		// Check if snake bites itself
 		for( var i = 0; i < this.body.length; i++ ){
-			if( nextPos.x == this.body[i].x && 
-			    nextPos.y == this.body[i].y ){
+			if( nextPos.x === this.body[i].x && 
+			    nextPos.y === this.body[i].y ){
 				return false;
 			}
 		}
 
-		if( nextPos.x == food.x && nextPos.y == food.y ){
+		if( nextPos.x === food.x && nextPos.y === food.y ){
 			var newBodyCell = new createjs.Shape();
 			newBodyCell.graphics.beginFill("black");
 			newBodyCell.graphics.drawRect( 0, 0, CELL_SIZE, CELL_SIZE );

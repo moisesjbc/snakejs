@@ -53,7 +53,7 @@ function testFindFirstFreePosition()
 
 function checkReturnedPos( returnedPos, expectedPos )
 {
-	if( returnedPos == null || returnedPos.x != expectedPos.x || returnedPos.y != expectedPos.y ){
+	if( returnedPos === null || returnedPos.x != expectedPos.x || returnedPos.y != expectedPos.y ){
 		alert( 'returnedPos != expectedPos' );
 		debugger;
 		return;
