@@ -56,7 +56,10 @@ function Food( stage )
 {
 	this.stage = stage;
 
-	this.reset = function( occupiedPositions = [] ){
+	this.reset = function( occupiedPositions ){
+		if( typeof( occupiedPositions ) ==='undefined' ){ 
+			occupiedPositions = [];
+		}
 		if( this.cell != undefined ){
 			this.stage.removeChild( this.cell );
 			delete this.cell;
