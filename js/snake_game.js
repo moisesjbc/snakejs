@@ -15,7 +15,7 @@ function init()
 	canvasWidth = document.getElementById( "snakeCanvas" ).width;
 	canvasHeight = document.getElementById( "snakeCanvas" ).height;
 
-	createFood();
+	food = new Food( stage );
 
 	createjs.Ticker.setFPS( 10 );
 	createjs.Ticker.addEventListener( "tick", update );
@@ -62,10 +62,4 @@ function handleKeyDown( event )
 function victory()
 {
 	return (snake.body.length >= ( (canvasWidth / CELL_SIZE) * (canvasHeight / CELL_SIZE) ) );
-}
-
-
-function createFood()
-{
-	food = new Food( stage );
 }
