@@ -47,5 +47,4 @@ function handleKeyDown( event )
 function createFood()
 {
 	food = new Food( stage );
-	alert( food.x );
 }
