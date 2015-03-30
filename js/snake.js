@@ -54,7 +54,7 @@ function Snake(){
 			}
 			this.headIndex++;
 			
-			food.reset();
+			food.reset( this.body );
 		}else{
 			this.body[this.tailIndex].x = nextPos.x;
 			this.body[this.tailIndex].y = nextPos.y;
