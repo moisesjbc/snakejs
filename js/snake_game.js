@@ -19,7 +19,7 @@ function init()
 	createjs.Ticker.setFPS( 10 );
 	createjs.Ticker.addEventListener( "tick", update );
 
-	document.addEventListener( "keydown", handleKeyDown );	
+	document.addEventListener( "keydown", handleKeyDown );
 }
 
 

@@ -40,6 +40,10 @@ function Snake(){
 			stage.addChild( newBodyCell );
 
 			this.body.splice( this.headIndex + 1, 0, newBodyCell );
+
+			if( this.tailIndex > this.headIndex ){
+				this.tailIndex++;
+			}
 			this.headIndex++;
 			
 			food.reset();
@@ -48,10 +52,9 @@ function Snake(){
 			this.body[this.tailIndex].y = nextPos.y;
 			
 			this.headIndex = ( this.headIndex + 1 ) % this.body.length;
+			this.tailIndex = ( this.tailIndex + 1 ) % this.body.length;
 		}
-		this.tailIndex = ( this.tailIndex + 1 ) % this.body.length;
-		
-		
+
 		if( this.body[this.headIndex].x < 0 || 
 		    this.body[this.headIndex].x > canvasWidth ||
 		    this.body[this.headIndex].y < 0 ||
