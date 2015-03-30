@@ -46,8 +46,6 @@ function testFindFirstFreePosition()
 		var returnedPos = findFirstFreePosition( startPos, occupiedPositions );
 		checkReturnedPos( returnedPos, expectedPos );
 	}
-
-	alert( 'testFindFirstFreePosition - OK' );
 }
 
 
