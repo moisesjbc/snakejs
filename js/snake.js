@@ -69,9 +69,9 @@ function Snake(){
 		}
 
 		if( this.body[this.headIndex].x < 0 || 
-		    this.body[this.headIndex].x > canvasWidth ||
+		    this.body[this.headIndex].x >= canvasWidth ||
 		    this.body[this.headIndex].y < 0 ||
-		    this.body[this.headIndex].y > canvasHeight ){
+		    this.body[this.headIndex].y >= canvasHeight ){
 			return false;
 		}
 
