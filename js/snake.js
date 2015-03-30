@@ -1,3 +1,4 @@
+"use strict";
 var snakeStartSize = 3;
 
 function Snake(){
@@ -7,7 +8,7 @@ function Snake(){
 		this.tailIndex = 0;
 		this.headIndex = snakeStartSize - 1;
 
-		for( i = 0; i < this.body.length; i++ ){
+		for( var i = 0; i < this.body.length; i++ ){
 			stage.removeChild( this.body[i] );
 		}
 		this.body = [];

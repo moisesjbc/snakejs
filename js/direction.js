@@ -1,3 +1,4 @@
+"use strict";
 function Direction( label )
 {
 	this.set = function( label )

@@ -1,3 +1,4 @@
+"use strict";
 var stage;
 var CELL_SIZE = 20;
 var canvasWidth, canvasHeight;

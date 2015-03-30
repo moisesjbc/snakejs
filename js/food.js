@@ -1,3 +1,4 @@
+"use strict";
 function positionOccupied( pos, occupiedPositions )
 {
 	for( var i = 0; i < occupiedPositions.length; i++ ){
