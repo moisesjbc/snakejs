@@ -23,13 +23,18 @@ function init()
 }
 
 
-function update()
+function update( event )
 {
-	if( !snake.update( stage, food ) ){
-		snake.reset();
-		food.reset();
+	if (!event.paused) {
+		if( !snake.update( stage, food ) ){
+			createjs.Ticker.paused = true;
+			alert( 'Game over' );
+			snake.reset();
+			food.reset();
+			createjs.Ticker.paused = false;
+		}
+		stage.update();
 	}
-	stage.update();
 }
 
 
