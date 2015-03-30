@@ -5,24 +5,32 @@ function Direction( label )
 	{
 		switch( label ){
 			case 'right':
-				this.label = 'right';
-				this.x = 1;
-				this.y = 0;
+				if( this.label != 'left' ){
+					this.label = 'right';
+					this.x = 1;
+					this.y = 0;
+				}
 			break;
 			case 'left':
-				this.label = 'left';
-				this.x = -1;
-				this.y = 0;
+				if( this.label != 'right' ){
+					this.label = 'left';
+					this.x = -1;
+					this.y = 0;
+				}
 			break;
 			case 'up':
-				this.label = 'up';
-				this.x = 0;
-				this.y = -1;
+				if( this.label != 'down' ){
+					this.label = 'up';
+					this.x = 0;
+					this.y = -1;
+				}
 			break;
 			case 'down':
-				this.label = 'down';
-				this.x = 0;
-				this.y = 1;
+				if( this.label != 'up' ){
+					this.label = 'down';
+					this.x = 0;
+					this.y = 1;
+				}
 			break;
 		}
 	}
