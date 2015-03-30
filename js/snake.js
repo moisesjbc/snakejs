@@ -35,8 +35,7 @@ function Snake(){
 		for( var i = 0; i < this.body.length; i++ ){
 			if( nextPos.x == this.body[i].x && 
 			    nextPos.y == this.body[i].y ){
-				this.reset();
-				return;
+				return false;
 			}
 		}
 
@@ -68,8 +67,10 @@ function Snake(){
 		    this.body[this.headIndex].x > canvasWidth ||
 		    this.body[this.headIndex].y < 0 ||
 		    this.body[this.headIndex].y > canvasHeight ){
-			this.reset();
+			return false;
 		}
+
+		return true;
 	}
 
 

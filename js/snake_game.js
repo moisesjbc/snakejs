@@ -25,7 +25,10 @@ function init()
 
 function update()
 {
-	snake.update( stage, food );
+	if( !snake.update( stage, food ) ){
+		snake.reset();
+		food.reset();
+	}
 	stage.update();
 }
 
