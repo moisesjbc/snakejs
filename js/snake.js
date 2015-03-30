@@ -31,6 +31,15 @@ function Snake(){
 		nextPos.x = this.body[this.headIndex].x + this.direction.x * CELL_SIZE;
 		nextPos.y = this.body[this.headIndex].y + this.direction.y * CELL_SIZE;
 
+		// Check if snake bites itself
+		for( var i = 0; i < this.body.length; i++ ){
+			if( nextPos.x == this.body[i].x && 
+			    nextPos.y == this.body[i].y ){
+				this.reset();
+				return;
+			}
+		}
+
 		if( nextPos.x == food.x && nextPos.y == food.y ){
 			var newBodyCell = new createjs.Shape();
 			newBodyCell.graphics.beginFill("black");
